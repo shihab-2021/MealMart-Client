@@ -7,7 +7,7 @@
 
 MealMart is a modern meal delivery platform connecting food lovers with local meal providers. Enjoy restaurant-quality meals prepared in home kitchens with the convenience of online ordering and delivery.
 
-👉 **Live Demo:** [https://autoluxe-pink.vercel.app/](https://autoluxe-pink.vercel.app/)
+👉 **Live Demo:** [https://mealmart.vercel.app/](https://mealmart.vercel.app/)
 
 ## Features ✨
 
