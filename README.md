@@ -66,19 +66,19 @@ MealMart is a modern meal delivery platform connecting food lovers with local me
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/shihab-2021/AutoLuxe-Client.git
-   git clone https://github.com/shihab-2021/AutoLuxe-Server.git
+   git clone https://github.com/shihab-2021/MealMart-Client.git
+   git clone https://github.com/shihab-2021/MealMart-Server.git
    ```
 
 2. **Install dependencies**:
 
    ```bash
    # Install frontend dependencies
-   cd AutoLuxe-Client
+   cd MealMart-Client
    npm install
 
    # Install backend dependencies
-   cd AutoLuxe-Server
+   cd MealMart-Server
    npm install
    ```
 
