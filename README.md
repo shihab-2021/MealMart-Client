@@ -1,10 +1,5 @@
 # MealMart 🍔🥗
 
-[![Next.js](https://img.shields.io/badge/Next.js-15.1+-black?logo=next.js)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-4.9+-3178C6?logo=typescript)](https://www.typescriptlang.org/)
-[![MongoDB](https://img.shields.io/badge/MongoDB-7.0+-47A248?logo=mongodb)](https://www.mongodb.com/)
-[![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
-
 MealMart is a modern meal delivery platform connecting food lovers with local meal providers. Enjoy restaurant-quality meals prepared in home kitchens with the convenience of online ordering and delivery.
 
 👉 **Live Demo:** [https://mealmart.vercel.app/](https://mealmart.vercel.app/)
