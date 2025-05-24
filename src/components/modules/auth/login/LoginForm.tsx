@@ -17,6 +17,11 @@ import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Logo from "@/assets/image.png";
 
+interface LoginForm {
+  email: string;
+  password: string;
+}
+
 export default function LoginForm() {
   const form = useForm();
   const searchParams = useSearchParams();
@@ -25,7 +30,13 @@ export default function LoginForm() {
 
   const {
     formState: { isSubmitting },
+    setValue,
   } = form;
+
+  const setPresetValues = (values: LoginForm) => {
+    setValue("email", values?.email);
+    setValue("password", values?.password);
+  };
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     try {
@@ -71,6 +82,47 @@ export default function LoginForm() {
         <div>
           <h1 className="text-xl font-semibold">Login</h1>
           <p className="font-extralight text-sm text-gray-600">Welcome back!</p>
+        </div>
+      </div>
+      <div className="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-lg my-4 shadow-sm">
+        <h1 className="text-lg font-bold mb-4">Quick Access Demos</h1>
+        <div className="flex flex-wrap gap-3">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() =>
+              setPresetValues({
+                email: "user@gmail.com",
+                password: "123456",
+              })
+            }
+          >
+            Customer
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() =>
+              setPresetValues({
+                email: "provider@gmail.com",
+                password: "123456",
+              })
+            }
+          >
+            Provider
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() =>
+              setPresetValues({
+                email: "admin@admin.com",
+                password: "123456",
+              })
+            }
+          >
+            Admin
+          </Button>
         </div>
       </div>
       <Form {...form}>

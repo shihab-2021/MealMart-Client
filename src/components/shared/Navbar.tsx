@@ -1,10 +1,12 @@
 "use client";
 import {
+  FileQuestionIcon,
   LayoutDashboardIcon,
   LogIn,
   LogOut,
   LogOutIcon,
   Menu,
+  Phone,
   Salad,
   SearchIcon,
   ShoppingCart,
@@ -68,7 +70,9 @@ export default function Navbar() {
   // Navigation items
   const navItems: NavItem[] = [
     { name: "Meals", path: "/mealList", icon: Salad },
-    // { name: "About", path: "/about", icon: ShoppingCart },
+    { name: "About", path: "/about", icon: ShoppingCart },
+    { name: "FAQ", path: "/faq", icon: FileQuestionIcon },
+    { name: "Contact", path: "/contact", icon: Phone },
     // {
     //   name: "Dashboard",
     //   path: `${profile?.data?.role === "admin" ? "/admin" : "/user"}`,

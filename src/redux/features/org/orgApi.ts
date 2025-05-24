@@ -32,6 +32,13 @@ const orgApi = baseApi.injectEndpoints({
       }),
       providesTags: ["profile", "orgs"],
     }),
+    getVerifiedOrgs: builder.query({
+      query: () => ({
+        url: `/orgs/verifiedOrgs`,
+        method: "GET",
+      }),
+      providesTags: ["orgs"],
+    }),
     verifyOrg: builder.mutation({
       query: (id: string) => ({
         url: `/orgs/verifyOrg/${id}`,
@@ -53,6 +60,7 @@ export const {
   useAddOrgMutation,
   useGetSingleOrgQuery,
   useGetUnverifiedOrgsQuery,
+  useGetVerifiedOrgsQuery,
   useVerifyOrgMutation,
   useDeleteOrgMutation,
   useUpdateOrgMutation,

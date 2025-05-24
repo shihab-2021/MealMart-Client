@@ -27,7 +27,7 @@ export default function HeroSection() {
   return (
     <div>
       <div
-        className="relative w-full h-[80vh] mt-16 flex items-center justify-center bg-cover bg-center hero-bg"
+        className="relative w-full h-[75vh] mt-16 flex items-center justify-center bg-cover bg-center hero-bg"
         //   style={{ backgroundImage: `url(${image})` }}
       >
         {/* Overlay */}
