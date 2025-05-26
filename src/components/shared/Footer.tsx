@@ -101,11 +101,11 @@ const Footer: React.FC = () => {
             <h3 className="text-gray-900 font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               {[
-                { text: "Learn", path: "/" },
-                { text: "Contact us", path: "/" },
-                { text: "FAQ", path: "/" },
-                { text: "Our story", path: "/" },
-                { text: "Our Service", path: "/" },
+                { text: "Home", path: "/" },
+                { text: "About Us", path: "/about" },
+                { text: "Contact us", path: "/contact" },
+                { text: "FAQ", path: "/faq" },
+                { text: "Meals", path: "/mealList" },
               ].map((link) => (
                 <li key={link.text}>
                   <Link
@@ -187,13 +187,13 @@ const Footer: React.FC = () => {
               <span>© {currentYear} Meal Mart. All rights reserved.</span>
               <div className="flex gap-4">
                 <Link
-                  href="/"
+                  href="/about"
                   className="hover:text-blue-600 transition-colors"
                 >
                   Privacy Policy
                 </Link>
                 <Link
-                  href="/"
+                  href="/about"
                   className="hover:text-blue-600 transition-colors"
                 >
                   Terms of Service

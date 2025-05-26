@@ -12,11 +12,16 @@ import { Badge } from "@/components/ui/badge";
 import { Clock, Heart, Share2, ShoppingCart, Star } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
-import { useGetSingleMealQuery } from "@/redux/features/meal/mealApi";
+import {
+  useGetSingleMealQuery,
+  useGetSingleMealReviewsQuery,
+} from "@/redux/features/meal/mealApi";
 import { useAppDispatch } from "@/redux/hooks";
 import { addToCart } from "@/redux/features/cart/cartSlice";
 import { toast } from "sonner";
 import { useSession } from "next-auth/react";
+import ReviewForm from "@/components/modules/MealDetails/ReviewForm";
+import ReviewList from "@/components/modules/MealDetails/ReviewList";
 
 export default function MealDetailPage({
   params,
@@ -27,10 +32,15 @@ export default function MealDetailPage({
   const { data: session } = useSession();
   const dispatch = useAppDispatch();
   const [mealId, setMealId] = useState<string>("");
-  const { data, refetch } = useGetSingleMealQuery(mealId, {
+  const { data, isLoading, refetch } = useGetSingleMealQuery(mealId, {
     skip: !mealId,
     refetchOnReconnect: true,
   });
+  const { data: reviews, refetch: reviewRefetch } =
+    useGetSingleMealReviewsQuery(mealId, {
+      skip: !mealId,
+      refetchOnReconnect: true,
+    });
   const meal = data?.data;
 
   useEffect(() => {
@@ -63,8 +73,21 @@ export default function MealDetailPage({
     toast.success("Meal added to cart!", { duration: 3000 });
   };
 
+  const ratings = meal?.reviews?.map((review: any) => review?.rating);
+  const total = ratings?.reduce((acc: any, cur: any) => acc + cur, 0);
+  const averageRating =
+    ratings?.length > 0 ? (total / ratings?.length)?.toFixed(1) : 0.0;
+
   return (
     <>
+      {isLoading && (
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="p-4 text-center text-gray-500">
+            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500 mx-auto"></div>
+            <span className="mt-2 block">Loading...</span>
+          </div>
+        </div>
+      )}
       {meal && (
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-20">
           {/* Image Gallery + Main Info */}
@@ -132,8 +155,10 @@ export default function MealDetailPage({
                 </span>
                 <div className="flex items-center gap-1 text-yellow-600">
                   <Star className="w-5 h-5" />
-                  <span>4.8</span>
-                  <span className="text-muted-foreground">(128 reviews)</span>
+                  <span>{averageRating || 0}</span>
+                  <span className="text-muted-foreground">
+                    ({meal?.reviews?.length || 0} reviews)
+                  </span>
                 </div>
               </div>
 
@@ -230,6 +255,7 @@ export default function MealDetailPage({
                   ))}
                 </div>
               </section>
+              <ReviewForm mealId={mealId} refetch={reviewRefetch} />
 
               {/* Reviews */}
               <section>
@@ -239,8 +265,9 @@ export default function MealDetailPage({
                     <p className="text-muted-foreground">
                       No reviews yet. Be the first to review this meal!
                     </p>
-                  ) : // Add review components here
-                  null}
+                  ) : (
+                    <ReviewList reviews={reviews?.data} />
+                  )}
                 </div>
               </section>
             </div>

@@ -47,12 +47,41 @@ const mealApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["meals", "meal"],
     }),
+    addReview: builder.mutation({
+      query: (payload) => ({
+        url: `/meals/review/${payload.id}`,
+        method: "PUT",
+        body: payload.reviewData,
+      }),
+      invalidatesTags: ["reviews", "review"],
+    }),
+    getSingleMealReviews: builder.query({
+      query: (id: string) => ({
+        url: `/meals/review/${id}`,
+        method: "GET",
+      }),
+      providesTags: ["reviews", "review"],
+    }),
+    getAllMealReviews: builder.query({
+      query: () => ({
+        url: `/meals/allReviews`,
+        method: "GET",
+      }),
+      providesTags: ["reviews", "review"],
+    }),
     deleteMeal: builder.mutation({
       query: (id: string) => ({
         url: `/meals/${id}`,
         method: "DELETE",
       }),
       invalidatesTags: ["meals", "meal"],
+    }),
+    searchMeals: builder.query({
+      query: (query: string) => ({
+        url: `/meals/searchMeal?query=${query}`,
+        method: "GET",
+      }),
+      providesTags: ["search-meals"],
     }),
   }),
 });
@@ -64,5 +93,9 @@ export const {
   useUpdateStockMutation,
   useGetSingleMealQuery,
   useUpdateMealMutation,
+  useGetSingleMealReviewsQuery,
+  useGetAllMealReviewsQuery,
+  useAddReviewMutation,
   useDeleteMealMutation,
+  useSearchMealsQuery,
 } = mealApi;

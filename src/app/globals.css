@@ -336,3 +336,15 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+#carousel button {
+  display: none;
+}
+
+#pc-carousel button:nth-of-type(1) {
+  left: 0px;
+}
+
+#pc-carousel button:nth-of-type(2) {
+  right: 0px;
+}

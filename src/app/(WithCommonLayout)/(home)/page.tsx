@@ -1,3 +1,4 @@
+import AllReviews from "@/components/modules/Home/AllReviews";
 import FAQ from "@/components/modules/Home/FAQ";
 import HeroSection from "@/components/modules/Home/HeroSection";
 import Organizations from "@/components/modules/Home/Organizations";
@@ -11,6 +12,7 @@ export default function Home() {
       <WhyMealMart />
       <StartShopping />
       <Organizations />
+      <AllReviews />
       <FAQ />
     </main>
   );

@@ -92,8 +92,6 @@ export default function EditProfileForm() {
     }
   };
 
-  console.log(typeof avatarUrl);
-
   return (
     <div className="max-w-2xl mx-auto">
       {user?.data && (

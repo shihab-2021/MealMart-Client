@@ -23,6 +23,7 @@ import { signOut, useSession } from "next-auth/react";
 import { toast } from "sonner";
 import { useEffect, useState } from "react";
 import { useAppSelector } from "@/redux/hooks";
+import MealSearch from "./MealSearch";
 
 declare module "next-auth" {
   interface Session {
@@ -107,6 +108,7 @@ export default function Navbar() {
             <Link href="/" className="flex items-center space-x-2">
               <Image src={Logo} alt="logo" className="w-28" />
             </Link>
+            <MealSearch />
             {/* Right side icons */}
             <div className="hidden lg:flex items-center space-x-6">
               <div className="hidden md:flex items-center space-x-8">
@@ -121,9 +123,6 @@ export default function Navbar() {
                   </Link>
                 ))}
               </div>
-              <button className="text-gray-600 hover:text-blue-600 transition-colors duration-200 relative">
-                <SearchIcon className="h-5 w-5" />
-              </button>
               {session?.user?.email && (
                 <Link className="relative" href={"/dashboard/customer"}>
                   <ShoppingCart />
